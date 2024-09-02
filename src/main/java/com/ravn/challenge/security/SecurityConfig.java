@@ -76,7 +76,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .exceptionHandling(ex -> ex.authenticationEntryPoint(new AuthException(mapper)))
                 .authorizeHttpRequests( auth -> auth
-                        .requestMatchers("api/v1/p/**").permitAll()
+                        .requestMatchers("api/v1/p/**", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
